@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>My Birthday Countdown Checker</title>
+
+</head>
+
+
+<body>
+
+
+  <div class="birthday-card">
+
+
+    <div class="emoji">Birthday Time</div>
+
+
+    <h1>My Birthday Countdown Checker</h1>
+
+
+    <p>
+      Click the button to check how many days are left for the birthday celebration.
+    </p>
+
+
+    <button onclick="checkBirthday()">Check Birthday Countdown</button>
+
+
+    <h2>Days Left</h2>
+    <div id="daysBox">?</div>
+
+
+    <div class="info-box">
+      <h2>Birthday Result</h2>
+      <p id="result"></p>
+    </div>
+
+
+    <div class="info-box">
+      <h2>Countdown Review</h2>
+      <p id="countdown"></p>
+    </div>
+
+
+  </div>
+
+
+  <script>
+    function checkBirthday() {
+
+
+      
+      let birthdayGift = null;
+      let birthdayPlan;
+
+
+     
+      const studentName = "Aarav";
+      const birthdayMonth = 8;
+      const birthdayDate = 15;
+
+
+      let message = "";
+      let countdownText = "";
+
+
+      
+      let today = new Date();
+      let currentYear = today.getFullYear();
+
+
+      let birthday = new Date(currentYear, birthdayMonth - 1, birthdayDate);
+
+
+      
+      if (birthday < today) {
+        birthday = new Date(currentYear + 1, birthdayMonth - 1, birthdayDate);
+      }
+
+
+      let timeDifference = birthday - today;
+      let daysLeft = Math.ceil(timeDifference / (1000 * 60 * 60 * 24));
+
+
+      
+      if (daysLeft === 0) {
+        message = "Happy Birthday, " + studentName + "! Today is your special day!";
+      } else if (daysLeft <= 7) {
+        message = "Your birthday is almost here, " + studentName + "!";
+      } else {
+        message = "Keep counting, " + studentName + "! Your birthday is coming soon.";
+      }
+
+
+      
+      let finalMessage = "Student Name: " + studentName + "<br>";
+      finalMessage = finalMessage + "Today's Date: " + today.toDateString() + "<br>";
+      finalMessage = finalMessage + "Birthday Date: " + birthday.toDateString() + "<br>";
+      finalMessage = finalMessage + "Message: " + message + "<br><br>";
+
+
+      finalMessage = finalMessage + "Birthday Gift: " + birthdayGift + "<br>";
+      finalMessage = finalMessage + "Birthday Plan: " + birthdayPlan;
+
+
+      document.getElementById("daysBox").innerHTML = daysLeft;
+      document.getElementById("result").innerHTML = finalMessage;
+
+
+      
+      let day = 1;
+
+
+      while (day <= 5) {
+        countdownText = countdownText + "Countdown check " + day;
+        countdownText = countdownText + ": Birthday excitement loading...<br>";
+        day++;
+      }
+
+
+      document.getElementById("countdown").innerHTML = countdownText;
+    }
+  </script>
+
+
+</body>
+</html>
